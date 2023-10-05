@@ -51,28 +51,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><a href=""><i class='bx bx-x-circle'></i></a></i></td>
-            <td><img src="/img/products/f1.jpg" alt=""></td>
-            <td>Cartoon Astronaut T-Shirt</td>
-            <td>$118.19</td>
-            <td><input type="number" value="1"></td>
-            <td>$118.19</td>
-          </tr>
-          <tr>
-            <td><i class='bx bx-x-circle'></i></td>
-            <td><img src="/img/products/f2.jpg" alt=""></td>
-            <td>Cartoon Astronaut T-Shirt</td>
-            <td>$118.19</td>
-            <td><input type="number" value="1"></td>
-            <td>$118.19</td>
-          </tr>
-          <tr>
-            <td><i class='bx bx-x-circle'></i></td>
-            <td><img src="/img/products/f3.jpg" alt=""></td>
-            <td>Cartoon Astronaut T-Shirt</td>
-            <td>$118.19</td>
-            <td><input type="number" value="1"></td>
-            <td>$118.19</td>
+            
           </tr>
         </tbody>
       </table>
@@ -91,15 +70,15 @@
         <table>
           <tr>
             <td>Cart Subtotal</td>
-            <td>$ 335</td>
+            <td id="cartSubtotal">addition of total subtotal</td>
           </tr>
           <tr>
             <td>Shipping</td>
-            <td>Free</td>
+            <td id="shipping">0</td>
           </tr>
           <tr>
             <td><strong>Total</strong></td>
-            <td><strong>$335</strong></td>
+            <td><strong id="cartTotal">cart subtotal + shipping</strong></td>
           </tr>
         </table>
         <button class="normal">Proceed to checkout</button>
@@ -156,6 +135,112 @@
         </div>
     </footer>
 
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+        // Renders the cart contents
+        const renderCart = (cart) => {
+            const tbody = document.querySelector('#cart tbody');
+            tbody.innerHTML = ''; // Clear the existing rows
+            
+            cart.forEach(product => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td><a href="#"><i class="bx bx-x-circle"></i></a></td>
+                    <td><img src="${product.imgSrc}" alt=""></td>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                    <td><input type="number" value="${product.quantity}"></td>
+                    <td>${parseFloat(product.price.slice(1)) * product.quantity}</td> 
+                `;
+
+                tbody.appendChild(row);
+
+                // Add event listener to remove product from cart
+                const removeIcon = row.querySelector('.bx-x-circle');
+                removeIcon.addEventListener('click', function(event) {
+                    event.preventDefault();
+
+                    cart = cart.filter(cartProduct => cartProduct.name !== product.name);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    row.remove();
+                });
+            });
+        };
+
+        const initialCart = JSON.parse(localStorage.getItem('cart') || '[]');
+        renderCart(initialCart);
+        });
+
+
+
+        function updateCartTotals(cart) {
+            const cartSubtotalElement = document.getElementById('cartSubtotal');
+            const shippingElement = document.getElementById('shipping');
+            const cartTotalElement = document.getElementById('cartTotal');
+
+            let cartSubtotal = 0;
+
+            cart.forEach(product => {
+                cartSubtotal += parseFloat(product.price.slice(1)) * product.quantity;
+            });
+
+            // Assuming shipping is always 0 for now, but you can adjust this
+            let shipping = 0;
+
+            cartSubtotalElement.textContent = `$${cartSubtotal.toFixed(2)}`;
+            shippingElement.textContent = `$${shipping.toFixed(2)}`;
+            cartTotalElement.textContent = `$${(cartSubtotal + shipping).toFixed(2)}`;
+        }
+
+        function renderCart(cart) {
+            const tbody = document.querySelector('#cart tbody');
+            tbody.innerHTML = '';
+
+            cart.forEach(product => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td><a href="#"><i class="bx bx-x-circle"></i></a></td>
+                    <td><img src="${product.imgSrc}" alt=""></td>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                    <td><input type="number" value="${product.quantity}" min="1"></td>
+                    <td>$${(parseFloat(product.price.slice(1)) * product.quantity).toFixed(2)}</td>
+                `;
+
+                tbody.appendChild(row);
+
+                // Event listener to remove product from cart
+                const removeIcon = row.querySelector('.bx-x-circle');
+                removeIcon.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    cart = cart.filter(cartProduct => cartProduct.name !== product.name);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    row.remove();
+                    updateCartTotals(cart);  // Update the totals after removing a product
+                });
+            });
+
+            updateCartTotals(cart);  // Update the totals after rendering the cart
+        }
+
+        // Initial render on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            renderCart(cart);
+        });
+
+
+
+    </script>
 </body>
     <script src="./script.js"></script>
 </html>
+
+
+
+
+

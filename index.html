@@ -7,6 +7,9 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <!-----https://github.com/mattboldt/typed.js------>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
     <!-------------https://boxicons.com/-------------->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -33,11 +36,48 @@
     </section>
 
     <section id="hero">
-        <h4>BIG DEALS</h4>
-        <h2>Small Price Tags</h2>
-        <h1>Buy Everything On E-Mart</h1>
-        <p>Save more with coupons & up to 30% off</p>
-        <button>Shop Now</button>
+        <div class="slides">
+            <div class="slide" style="background-image: url('./img/hero1.jpg');"></div>
+            <div class="slide" style="background-image: url('./img/hero2.jpg');"></div>
+            <div class="slide" style="background-image: url('./img/hero4.png');"></div>
+            <div class="slide" style="background-image: url('./img/hero3.jpg');"></div>
+        </div>
+        <div class="content">
+            <h4>BIG DEALS</h4>
+            <h2>Small Price Tags</h2>
+            <h1>Buy Everything <span class="text"></span></h1>
+            <p>Save more with coupons & up to 30% off</p>
+            <button>Shop Now</button>
+        </div>
+    </section>
+
+    <section id="counter">
+        <div class="counter-section">
+            <div class="counter">
+                <h2>
+                    <span id="count1"></span>+
+                </h2>
+                <p>Partner</p>
+            </div>
+            <div class="counter">
+                <h2>
+                    <span id="count2"></span>+
+                </h2>
+                <p>Customer</p>
+            </div>
+            <div class="counter">
+                <h2>
+                    <span id="count3"></span>+
+                </h2>
+                <p>Category</p>
+            </div>
+            <div class="counter">
+                <h2>
+                    <span id="count4"></span>+
+                </h2>
+                <p>Products</p>
+            </div>
+        </div>
     </section>
 
     <section id="feature" class="section-p1">
@@ -88,7 +128,7 @@
                     <img src="./img/products/f2.jpg" alt="">
                     <div class="des">
                         <span>Adidas</span>
-                        <h5>Cartoon Astronaut T-Shirts</h5>
+                        <h5>Cartoon Astronaut T-Shirts Green</h5>
                         <div class="star" data-rating="4"></div> 
                         <h4 class="price">$74</h4>
                     </div>
@@ -96,64 +136,76 @@
                 </a>
             </div>
             <div class="pro"><!-------------3---------------->
-                <img src="./img/products/f3.jpg" alt="">
-                <div class="des">
-                    <span>Adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                     <div class="star" data-rating="4"></div> 
-                    <h4 class="price">$74</h4>
-                </div>
-                <a href="#"><i class='bx bxs-basket cart'></i></a>
+                <a href="sproduct.html?id=3">
+                    <img src="./img/products/f3.jpg" alt="">
+                    <div class="des">
+                        <span>Adidas</span>
+                        <h5>Cartoon Astronaut T-Shirts Flower</h5>
+                            <div class="star" data-rating="4"></div> 
+                        <h4 class="price">$74</h4>
+                    </div>
+                    <a href="#"><i class='bx bxs-basket cart'></i></a>
+                </a>
             </div>
             <div class="pro"><!-------------4---------------->
-                <img src="./img/products/f4.jpg" alt="">
-                <div class="des">
-                    <span>Adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                     <div class="star" data-rating="5"></div> 
-                    <h4 class="price">$74</h4>
-                </div>
-                <a href="#"><i class='bx bxs-basket cart'></i></a>
+                <a href="sproduct.html?id=4">
+                    <img src="./img/products/f4.jpg" alt="">
+                    <div class="des">
+                        <span>Adidas</span>
+                        <h5>Cartoon Astronaut T-Shirts</h5>
+                        <div class="star" data-rating="5"></div> 
+                        <h4 class="price">$74</h4>
+                    </div>
+                    <a href="#"><i class='bx bxs-basket cart'></i></a>
+                </a>
             </div>
             <div class="pro"><!-------------5---------------->
-                <img src="./img/products/f5.jpg" alt="">
-                <div class="des">
-                    <span>Adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                     <div class="star" data-rating="4.5"></div> 
-                    <h4 class="price">$74</h4>
-                </div>
-                <a href="#"><i class='bx bxs-basket cart'></i></a>
+                <a href="sproduct.html?id=5">
+                    <img src="./img/products/f5.jpg" alt="">
+                    <div class="des">
+                        <span>Adidas</span>
+                        <h5>Cartoon Astronaut T-Shirts</h5>
+                        <div class="star" data-rating="4.5"></div> 
+                        <h4 class="price">$74</h4>
+                    </div>
+                    <a href="#"><i class='bx bxs-basket cart'></i></a>
+                </a>
             </div>
             <div class="pro"><!-------------6---------------->
-                <img src="./img/products/f6.jpg" alt="">
-                <div class="des">
-                    <span>Adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                     <div class="star" data-rating="3.5"></div> 
-                    <h4 class="price">$74</h4>
-                </div>
-                <a href="#"><i class='bx bxs-basket cart'></i></a>
+                <a href="sproduct.html?id=6">
+                    <img src="./img/products/f6.jpg" alt="">
+                    <div class="des">
+                        <span>Adidas</span>
+                        <h5>Men's Stylish Shirt</h5>
+                        <div class="star" data-rating="3.5"></div> 
+                        <h4 class="price">$74</h4>
+                    </div>
+                    <a href="#"><i class='bx bxs-basket cart'></i></a>
+                </a>
             </div>
             <div class="pro"><!-------------7---------------->
-                <img src="./img/products/f7.jpg" alt="">
-                <div class="des">
-                    <span>Adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star" data-rating="5"></div>
-                    <h4 class="price">$74</h4>
-                </div>
-                <a href="#"><i class='bx bxs-basket cart'></i></a>
+                <a href="sproduct.html?id=7">
+                    <img src="./img/products/f7.jpg" alt="">
+                    <div class="des">
+                        <span>Adidas</span>
+                        <h5>Womens Baggy Cotton Pant</h5>
+                        <div class="star" data-rating="5"></div>
+                        <h4 class="price">$74</h4>
+                    </div>
+                    <a href="#"><i class='bx bxs-basket cart'></i></a>
+                </a>
             </div>
             <div class="pro"><!-------------8---------------->
-                <img src="./img/products/f8.jpg" alt="">
-                <div class="des">
-                    <span>Adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                     <div class="star" data-rating="4.5"></div> 
-                    <h4 class="price">$74</h4>
-                </div>
-                <a href="#"><i class='bx bxs-basket cart'></i></a>
+                <a href="sproduct.html?id=8">
+                    <img src="./img/products/f8.jpg" alt="">
+                    <div class="des">
+                        <span>Adidas</span>
+                        <h5>Women's Waist Crop Top</h5>
+                        <div class="star" data-rating="4.5"></div> 
+                        <h4 class="price">$74</h4>
+                    </div>
+                    <a href="#"><i class='bx bxs-basket cart'></i></a>
+                </a>
             </div>
         </div>
     </section>
